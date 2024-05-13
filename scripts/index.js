@@ -18,10 +18,14 @@ let teams = [
       locatedIn:"Kansas City, MO"
     }
   ];
+
   window.onload = function() {
 
-    
     initfootballDropdown();
+
+    const getbutton=document.getElementById("getdropitem");
+    
+    getbutton.onclick=GetDropItemValues;
  
  };
    
@@ -39,5 +43,20 @@ let teams = [
         // select element
         footballList.appendChild(theOption);
      }
+  }
+
+  function GetDropItemValues()
+  {
+    const footballList1 = document.getElementById("footballList");
+    let selectedvalue=footballList1.value; 
+   
+    let team=teams.find(c=>c.teamcode==selectedvalue);
+    let textContent="";
+
+const containerp = document.getElementById("containerp");
+   textContent = `You selected the ${team.name} (${team.teamcode}) who play in ${team.locatedIn}`;
+       
+  containerp.innerText=textContent;
+
   }
   
